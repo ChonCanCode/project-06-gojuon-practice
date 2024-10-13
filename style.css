@@ -1,0 +1,54 @@
+*{
+    background: rgb(53, 105, 122);
+    color: white
+}
+
+
+.container{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#output, #answer{
+    font-size: 5rem;
+}
+input{
+    outline: none;
+    border: 1px solid rgb(227, 223, 223);
+    border-radius: 5px 0 0 5px;
+
+}
+
+button{
+    outline: none;
+    border: 1px solid rgb(227, 223, 223);
+    border-radius: 0 5px 5px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+button:hover {
+    background:whblack;
+}
+
+input, button {
+    display: block; 
+}
+
+.input_container{
+    display: flex;
+}
+
+.reload{
+    margin: auto;
+    display:flex;
+    align-self: center;
+    justify-content: center;
+    border:none;
+    outline:none;
+    font-size: 1rem;
+}
