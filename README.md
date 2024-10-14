@@ -10,7 +10,7 @@
 ***Version 1.1***
 - Bug, if space was entered in the input answer will always false
 - Roadmap
-    1. Create a scoped .createElement("h2") to store the charater that was tested with result
+    1. Create a scoped element .createElement("h2") to store the charater that was tested with result
     2. Storing the result accordingly with .insertAdjacentElement("beforeend", h2)
     3. Make the character already tested will not be repeated in a singe sequence
     4. **diffcult** Create a table match with the natual gojuon template and each character that was tested will be highlighted from "style display: hidden" > " active". 
