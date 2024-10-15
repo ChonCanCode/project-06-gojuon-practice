@@ -32,7 +32,7 @@ function checking(){
 
     const currentSound = sound[randomIndex];
 
-    let outcome = userInput == currentSound ? 'Correct' : `Wrong it is "${currentSound}"`
+    let outcome = userInput == currentSound ? 'Correct!' : `Nice try, it is "${currentSound}"`
 
     document.getElementById('answer').innerHTML = outcome;
 
