@@ -8,14 +8,19 @@
     <title>GOJUON PRACTICE</title>
 </head>
 <body>
-    <h1>五十音の練習</h1>
-    <p style="border-bottom: 2px solid rgba(211,211,211,0.5);"></p>
+    <header>
+    <h1 class="header">五十音の練習</h1>
+    </header>
     <div class="container">
+        <div class="bingo_container">
+            <div class="bingo">
+            </div>
+        </div>
         <div class="character">
             <span id="output"></span>
         </div>
         <div class="input_container">
-        <input type="text" id="user_input" placeholder="Enter sound" oninput="validateLetters(this)"><button onclick="checking()">Check</button><button onclick="generate()" class="reload"><i class="fa-solid fa-arrow-right"></i></button>
+        <input type="text" id="user_input" placeholder="Romaji sound" oninput="validateLetters(this)"><button onclick="checking()">Check</button><button onclick="generate()" class="reload"><i class="fa-solid fa-arrow-right"></i></button>
         <script>
             function validateLetters(input) {
                 input.value = input.value.replace(/[^a-zA-Z]/g, ''); // Allow letters only (A-Z, a-z)
@@ -31,11 +36,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-<input type="text" id="amount" oninput="validateNumber(this)">
-
-<script>
-    function validateNumber(input) {
-        input.value = input.value.replace(/[^0-9.]/g, ''); // Allow digits and dots only
-    }
-</script>
