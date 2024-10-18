@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/84cc6cb317.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>GOJUON PRACTICE</title>
+</head>
+<body>
+    <header>
+    <h1 class="header">五十音の練習</h1>
+    </header>
+    <div class="container">
+        <div class="bingo_container">
+            <div class="bingo">
+            </div>
+        </div>
+        <div class="character">
+            <span id="output"></span>
+        </div>
+        <div class="input_container">
+        <input type="text" id="user_input" placeholder="Romaji sound" oninput="validateLetters(this)"><button onclick="checking()">Check</button><button onclick="generate()" class="reload"><i class="fa-solid fa-arrow-right"></i></button>
+        <script>
+            function validateLetters(input) {
+                input.value = input.value.replace(/[^a-zA-Z]/g, ''); // Allow letters only (A-Z, a-z)
+            }
+        </script>
+        </div>
+        <div>
+            <span id="answer"></span>
+            <div>
+        </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

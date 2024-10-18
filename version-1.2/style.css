@@ -1,0 +1,190 @@
+/* Back ground */
+
+*{
+    background: rgb(53, 105, 122);
+    color: white
+}
+
+.body{
+    overflow-y: auto;
+}
+
+/* Header */
+
+.header{
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+    border-bottom: 2px solid rgba(211,211,211,0.5);
+    visibility: visible;
+    z-index: 1000;
+}
+
+
+/* Body */
+.container{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Bingo body */
+
+.bingo_container{
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    margin: 1px;
+    z-index: 1;
+}
+
+.bingo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 300px;   
+}
+
+.bingo h1{
+    border:2px solid rgba(211,211,211,0.5);
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    padding: none;
+}
+
+
+/* Character body */
+
+.character{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:2px solid rgba(211,211,211,0.5);
+    margin: 40px;
+    height: 100px;
+    width: 100px;
+    padding: none;
+    border-radius: 5px;
+}
+
+#output, #answer{
+    font-size: 3rem;
+}
+
+input{
+    outline: none;
+    border: 1px solid rgb(227, 223, 223);
+    border-radius: 5px 0 0 5px;
+}
+
+
+
+button{
+    outline: none;
+    border: 1px solid rgb(227, 223, 223);
+    border-radius: 0 5px 5px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+button:hover {
+    background:black;
+}
+
+input, button {
+    display: block; 
+}
+
+.input_container{
+    display: flex;
+}
+
+.reload{
+    margin: auto;
+    display:flex;
+    align-self: center;
+    justify-content: center;
+    border:none;
+    outline:none;
+    font-size: 1rem;
+}
+
+
+/* Responsive styles for different screen sizes */
+@media (max-width: 1024px) {
+    .bingo h1 {
+        font-size: 1.8rem; /* Adjust font size for smaller screens */
+    }
+    .container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    @media (max-width: 768px) {
+        .header {
+        }
+        .header h1 {
+            font-size: 1.2rem; /* Optional: Adjust font size for smaller screens */
+        }
+    }
+    
+    .bingo_container {
+        max-width: 100%; /* Expand to full width */
+    }
+    .bingo h1 {
+        font-size: 1.5rem;
+    }
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+
+    }
+    .bingo h1 {
+        font-size: 1.2rem;
+    }
+    .container {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .header {
+
+    }
+
+    .bingo h1 {
+        font-size: 0.5rem;
+        height: 20px;
+        width: 20px;
+    }
+    .container {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 240px) {
+    .bingo h1 {
+        font-size: 0.4rem;
+        height: 15px;
+        width: 15px;
+        padding: 0;
+    }
+    .container {
+        padding: 0;
+    }
+}
