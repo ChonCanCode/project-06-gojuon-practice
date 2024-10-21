@@ -19,8 +19,12 @@
         <div class="character">
             <span id="output"></span>
         </div>
+        <div class="label_container">
+        <label class="label" for="user_input">Romaji Sound</label>
+    </div>
         <div class="input_container">
-        <input type="text" id="user_input" placeholder="Romaji sound" oninput="validateLetters(this)"><button onclick="checking()">Check</button><button onclick="generate()" class="reload"><i class="fa-solid fa-arrow-right"></i></button>
+
+        <input type="text" id="user_input" placeholder="" oninput="validateLetters(this)"><button onclick="checking()">Check</button><button onclick="generate()" class="reload" style="background-color: rgba(0, 0, 0, 0.1)"><i class="fa-solid fa-arrow-right"></i></button>
         <script>
             function validateLetters(input) {
                 input.value = input.value.replace(/[^a-zA-Z]/g, ''); // Allow letters only (A-Z, a-z)
