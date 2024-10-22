@@ -1,5 +1,20 @@
 **project-06-gojuon-practice**
 
+***Versison 1.3***
+- Planning to add a function where up on clicking the character it will display the sound of the character with the following function.
+
+```
+    div.addEventListener("click", function () {
+        if (h2_answer.style.display === "none") {
+            h2_answer.style.display = "block";
+        } else {
+            h2_answer.style.display = "none";
+        }
+    });
+```
+
+
+
 ***Version 1.2***
 - Bug fixed added exter function below to filter out numerical value and space
 
