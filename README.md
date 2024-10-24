@@ -1,5 +1,57 @@
 **project-06-gojuon-practice**
 
+***Version 1.4***
+- Changed all the h2 elements into button elements so it will have the button effect enableing clicking function that switched to sound upon clicking. And if clicking againg switched back to hiragana.
+- Added regenrating function if the character already matched as green at teh bingo session. Need to review code as follow:
+```
+let correctHiraganaItem;  // Declare globally to use inside generate()
+
+;et checkedIndices = new Set();  // Set to store indices of green-marked characters
+
+function generate() {
+    // Continue generating a random index until we find one that hasn't been checked
+    do {
+        randomIndex = Math.floor(Math.random() * hiragana.length);
+    } while (checkedIndices.has(randomIndex) && checkedIndices.size < hiragana.length);
+
+    // If all characters have been marked, exit or do something else
+    if (checkedIndices.size === hiragana.length) {
+        document.getElementById('output').innerHTML = "All characters have been checked!";
+        return;
+    }
+
+    // Get the new Hiragana character
+    let currentHiragana = hiragana[randomIndex];
+    expression = currentHiragana;
+    document.getElementById('output').innerHTML = expression;
+}
+
+function checking() {
+    const userInput = document.getElementById('user_input').value.toLowerCase();
+    const currentSound = sound[randomIndex];
+
+    let outcome = userInput === currentSound ? 'Correct!' : 'Close, keep trying.';
+    document.getElementById('answer').innerHTML = outcome;
+
+    // Access the corresponding button using randomIndex
+    correctHiraganaItem = document.querySelector(`.hiragana-item[data-index='${randomIndex}']`);
+
+    // Change background color based on the outcome
+    if (userInput === currentSound) {
+        correctHiraganaItem.style.background = 'green';  // Set background to green if correct
+        checkedIndices.add(randomIndex);  // Add index to checked set
+        document.getElementById('user_input').value = '';  // Clear input field
+        generate();  // Call generate to get a new Hiragana character
+    } else {
+        correctHiraganaItem.style.background = 'red';  // Set background to red if incorrect
+        document.getElementById('user_input').value = '';  // Clear input field
+    }
+}
+```
+
+
+
+
 ***Versison 1.3***
 - Planning to add a function where up on clicking the character it will display the sound of the character with the following function.
 

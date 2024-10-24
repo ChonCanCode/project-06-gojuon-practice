@@ -17,22 +17,28 @@ let bingo = document.getElementsByClassName("bingo")[0];
 
 let hiraganaItems = document.querySelectorAll('.hiragana-item');
 
+let correctHiraganaItem;  // Declare globally to use inside generate()
+
 function addItem(){
 
-    for(i = 0; i < hiragana.length; i++){
-        let h1 = document.createElement("h1");
-        h1.innerHTML = hiragana[i];
+    for(let i = 0; i < hiragana.length; i++){
+        let button = document.createElement("button");
+        button.innerHTML = hiragana[i];
 
         // Assign a unique class or data attribute to each element for easier selection
-        h1.classList.add("hiragana-item");
-        h1.setAttribute("data-index", i); // Store the index for later use
+        button.classList.add("hiragana-item");
+        button.classList.add("hiragana-button")
+        button.setAttribute("data-index", i); // Store the index for later use
 
-        h1.addEventListener("click", function() {
-            h1.style.background = "rgba(211,211,211,0.5)";
-            h1.style.cursor = "pointer";
+        button.addEventListener("click", function() {
+            if (button.innerHTML === sound[i]) {
+                button.innerHTML = hiragana[i]
+            } else {
+                button.innerHTML = sound[i]
+            }
         })
     
-        bingo.appendChild(h1);
+        bingo.appendChild(button);
     }
 }
 
@@ -41,38 +47,44 @@ document.addEventListener('keydown',function(event){
     checking();
 }
 });
+let checkedIndices = new Set();  // Set to store indices of green-marked characters
 
-function generate(){
-    
-    randomIndex = Math.floor(Math.random() * hiragana.length);
-    
+function generate() {
+    // Continue generating a random index until we find one that hasn't been checked
+    do {
+        randomIndex = Math.floor(Math.random() * hiragana.length);
+    } while (checkedIndices.has(randomIndex) && checkedIndices.size < hiragana.length);
+
+    // If all characters have been marked, exit or do something else
+    if (checkedIndices.size === hiragana.length) {
+        document.getElementById('output').innerHTML = "All characters have been checked!";
+        return;
+    }
+
+    // Get the new Hiragana character
     let currentHiragana = hiragana[randomIndex];
-    
     expression = currentHiragana;
-
     document.getElementById('output').innerHTML = expression;
 }
-
 
 function checking() {
     const userInput = document.getElementById('user_input').value.toLowerCase();
     const currentSound = sound[randomIndex];
 
     let outcome = userInput === currentSound ? 'Correct!' : 'Close, keep trying.';
-    
     document.getElementById('answer').innerHTML = outcome;
 
-    // Access the corresponding h1 element using the randomIndex
-    let correctHiraganaItem = document.querySelector(`.hiragana-item[data-index='${randomIndex}']`);
-    
+    // Access the corresponding button using randomIndex
+    correctHiraganaItem = document.querySelector(`.hiragana-item[data-index='${randomIndex}']`);
+
     // Change background color based on the outcome
     if (userInput === currentSound) {
         correctHiraganaItem.style.background = 'green';  // Set background to green if correct
-        document.getElementById('user_input').value = '';
-        generate();
+        checkedIndices.add(randomIndex);  // Add index to checked set
+        document.getElementById('user_input').value = '';  // Clear input field
+        generate();  // Call generate to get a new Hiragana character
     } else {
         correctHiraganaItem.style.background = 'red';  // Set background to red if incorrect
         document.getElementById('user_input').value = '';  // Clear input field
     }
 }
-
