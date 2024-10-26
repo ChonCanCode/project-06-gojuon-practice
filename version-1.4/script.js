@@ -47,18 +47,21 @@ document.addEventListener('keydown',function(event){
     checking();
 }
 });
-let checkedIndices = new Set();  
+let checkedIndices = new Set();  // Set to store indices of green-marked characters
 
 function generate() {
+    // Continue generating a random index until we find one that hasn't been checked
     do {
         randomIndex = Math.floor(Math.random() * hiragana.length);
     } while (checkedIndices.has(randomIndex) && checkedIndices.size < hiragana.length);
 
+    // If all characters have been marked, exit or do something else
     if (checkedIndices.size === hiragana.length) {
         document.getElementById('output').innerHTML = "All characters have been checked!";
         return;
     }
 
+    // Get the new Hiragana character
     let currentHiragana = hiragana[randomIndex];
     expression = currentHiragana;
     document.getElementById('output').innerHTML = expression;
@@ -71,7 +74,10 @@ function checking() {
     let outcome = userInput === currentSound ? 'Correct!' : 'Close, keep trying.';
     document.getElementById('answer').innerHTML = outcome;
 
+    // Access the corresponding button using randomIndex
     correctHiraganaItem = document.querySelector(`.hiragana-item[data-index='${randomIndex}']`);
+
+    // Change background color based on the outcome
     if (userInput === currentSound) {
         correctHiraganaItem.style.background = 'green';  // Set background to green if correct
         checkedIndices.add(randomIndex);  // Add index to checked set
