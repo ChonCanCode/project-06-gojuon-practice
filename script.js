@@ -82,3 +82,10 @@ function checking() {
         document.getElementById('user_input').value = '';  // Clear input field
     }
 }
+
+
+let mySet = new Set();
+mySet.add(1);
+mySet.add(2);
+mySet.add(1); // Won't add again since 1 is already in the set
+console.log(mySet); // Output: Set { 1, 2 }
