@@ -9,7 +9,6 @@
     overflow-y: auto;
 }
 
-/* Header */
 
 .header{
     display: flex;
@@ -21,7 +20,6 @@
 }
 
 
-/* Body */
 .container{
     display: flex;
     margin: auto;
@@ -32,7 +30,6 @@
     overflow-y: auto;
 }
 
-/* Bingo body */
 
 .bingo_container{
     display: flex;
@@ -42,14 +39,14 @@
     z-index: 1;
 }
 
-.bingo{
+.hiraganaButton{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 300px;   
 }
 
-.bingo h1{
+.hiraganaButton h1{
     border:2px solid rgba(211,211,211,0.5);
     border-radius: 5px;
     height: 50px;
@@ -61,8 +58,6 @@
     padding: none;
 }
 
-
-/* Character body */
 
 .character{
     display: flex;
@@ -100,6 +95,22 @@ input{
     padding-bottom: 6px;
     height: 50px;
     width: 50px;
+}
+
+
+#clearButton {
+    outline: none;
+    border: 1px solid rgb(227, 223, 223, 0.5);
+    color: rgb(227, 223, 223, 0.5);
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 1rem;
+}
+#clearButton:hover {
+    border: 1px solid white;
+    color: white;
 }
 
 #check-button{
@@ -148,10 +159,9 @@ input, button {
 }
 
 
-/* Responsive styles for different screen sizes */
 @media (max-width: 1024px) {
-    .bingo h1 {
-        font-size: 1.8rem; /* Adjust font size for smaller screens */
+    .hiraganaButton h1 {
+        font-size: 1.8rem; 
     }
     .container {
         padding: 15px;
@@ -163,14 +173,14 @@ input, button {
         .header {
         }
         .header h1 {
-            font-size: 1.2rem; /* Optional: Adjust font size for smaller screens */
+            font-size: 1.2rem; 
         }
     }
     
     .bingo_container {
-        max-width: 100%; /* Expand to full width */
+        max-width: 100%;
     }
-    .bingo h1 {
+    .hiraganaButton h1 {
         font-size: 1.5rem;
     }
     .container {
@@ -180,7 +190,7 @@ input, button {
 
 @media (max-width: 480px) {
 
-    .bingo h1 {
+    .hiraganaButton h1 {
         font-size: 1rem;
     }
 }
@@ -190,7 +200,7 @@ input, button {
 
     }
 
-    .bingo h1 {
+    .hiraganaButton h1 {
         font-size: 0.5rem;
         height: 20px;
         width: 20px;
@@ -201,7 +211,7 @@ input, button {
 }
 
 @media (max-width: 240px) {
-    .bingo h1 {
+    .hiraganaButton h1 {
         font-size: 0.4rem;
         height: 15px;
         width: 15px;
