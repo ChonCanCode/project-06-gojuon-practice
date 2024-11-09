@@ -3,16 +3,15 @@ let sound = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','si','su','se','s
 let randomIndex = -1;
 let expression = ''
 let hiraganaButton = document.getElementsByClassName("hiraganaButton")[0];
-// let hiraganaItems = document.querySelectorAll('.hiragana-item');
 let correctHiraganaItem;
 
-// let webStorage = localStorage.getItem("checkedCharacter") ? JSON.parse(localStorag.getItem("checkedCharacter")) : [];
+
 
 window.addEventListener('load', startUpFunction);
 function startUpFunction() {
-    addItem(); // Add all buttons first
-    updateUIFromStorage(); // Update the UI based on stored progress
-    generate(); // Start the quiz with a new character
+    addItem(); 
+    updateUIFromStorage(); 
+    generate(); 
 }
 
 function addItem(){
@@ -84,6 +83,7 @@ function checking() {
     } else {
         correctHiraganaItem.style.background = 'red'; 
         document.getElementById('user_input').value = ''; 
+        
     }
 }
 
@@ -97,9 +97,9 @@ function updateUIFromStorage() {
 }
 
 function clearStorage(){
-    localStorage.removeItem("checkedCharacter"); // Only clear the specific key
-    checkedIndices = new Set(); // Reset it to an empty Set
+    localStorage.removeItem("checkedCharacter"); 
+    checkedIndices = new Set(); 
     document.querySelectorAll('.hiragana-item').forEach(item => {
-        item.style.background = ''; // Reset all button colors
+        item.style.background = '';
     });
 }
