@@ -3,17 +3,17 @@ let sound = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','si','su','se','s
 let randomIndex = -1;
 let expression = ''
 let hiraganaButton = document.getElementsByClassName("hiraganaButton")[0];
-let hiraganaItems = document.querySelectorAll('.hiragana-item');
-let correctHiraganaItem; 
+// let hiraganaItems = document.querySelectorAll('.hiragana-item');
+let correctHiraganaItem;
 
 // let webStorage = localStorage.getItem("checkedCharacter") ? JSON.parse(localStorag.getItem("checkedCharacter")) : [];
 
 window.addEventListener('load', startUpFunction);
-function startUpFunction(){
-    generate();
-    addItem();
+function startUpFunction() {
+    addItem(); // Add all buttons first
+    updateUIFromStorage(); // Update the UI based on stored progress
+    generate(); // Start the quiz with a new character
 }
-
 
 function addItem(){
     for(let i = 0; i < hiragana.length; i++){
@@ -42,7 +42,6 @@ document.addEventListener('keydown',function(event){
 }
 });
 
-let checkedIndices = new Set();  
 
 function generate() {
     do {
@@ -55,27 +54,52 @@ function generate() {
     }
 
     let currentHiragana = hiragana[randomIndex];
+
     expression = currentHiragana;
     document.getElementById('output').innerHTML = expression;
 }
 
+let checkedIndices = new Set(
+    localStorage.getItem("checkedCharacter")
+      ? JSON.parse(localStorage.getItem("checkedCharacter"))
+      : []
+  );
+
 function checking() {
     const userInput = document.getElementById('user_input').value.toLowerCase();
     const currentSound = sound[randomIndex];
-
     let outcome = userInput === currentSound ? 'Correct!' : 'Close, keep trying.';
     document.getElementById('answer').innerHTML = outcome;
-
     correctHiraganaItem = document.querySelector(`.hiragana-item[data-index='${randomIndex}']`);
+
     if (userInput === currentSound) {
-        correctHiraganaItem.style.background = 'green'; 
+        correctHiraganaItem.style.background = 'green';
+
         checkedIndices.add(randomIndex); 
+        localStorage.setItem("checkedCharacter", JSON.stringify([...checkedIndices]));
+
         document.getElementById('user_input').value = '';  
         generate();  
+
     } else {
         correctHiraganaItem.style.background = 'red'; 
         document.getElementById('user_input').value = ''; 
     }
 }
 
+function updateUIFromStorage() {
+    checkedIndices.forEach(index => {
+        const button = document.querySelector(`.hiragana-item[data-index='${index}']`);
+        if (button) {
+            button.style.background = 'green';
+        }
+    });
+}
 
+function clearStorage(){
+    localStorage.removeItem("checkedCharacter"); // Only clear the specific key
+    checkedIndices = new Set(); // Reset it to an empty Set
+    document.querySelectorAll('.hiragana-item').forEach(item => {
+        item.style.background = ''; // Reset all button colors
+    });
+}
