@@ -77,6 +77,10 @@ function checking() {
         checkedIndices.add(randomIndex); 
         localStorage.setItem("checkedCharacter", JSON.stringify([...checkedIndices]));
 
+        // let checkedIndices = new Set([1, 2, 3]);
+        // let array = [...checkedIndices]; // Converts to [1, 2, 3]
+        // console.log(array); // Output: [1, 2, 3]
+
         document.getElementById('user_input').value = '';  
         generate();  
 
